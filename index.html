@@ -14,10 +14,19 @@
         
         function getComputerChoice() {
             let randomNumber = Math.floor(Math.random() * 3) + 1;
-            return randomNumber;
             console.log(randomNumber);
+            let tool;
+            if (randomNumber === 1) {
+            tool = "Rock";
+            } 
+            if (randomNumber === 2) {
+            tool = "Paper";
+            }
+            if (randomNumber === 3) {
+            tool = "Scissors";
+            }
+            console.log(tool);
         }
-        
     
     </script>
 </body>
