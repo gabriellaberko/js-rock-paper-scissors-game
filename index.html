@@ -33,10 +33,15 @@
         */
         function getHumanChoice() {
             let choice = prompt("Rock, paper, or scissors?"); 
+            if (choice === null) {
+            alert("Game canceled.");
+            return null;
+            }
             choice = choice.toLowerCase();
             if (choice === "rock" || choice === "paper" || choice === "scissors") {
                 console.log(`You're playing ${choice}!`);
-                return choice; }
+                return choice; 
+                }
             else {
                 alert("Invalid choice. Please try again!");
                 return getHumanChoice(); // prompt again if invalid
@@ -75,6 +80,7 @@
 
         playButton.addEventListener("click", () => {
             const humanChoice = getHumanChoice();
+            if (humanChoice === null) return; //stop running if the user cancelled the prompt
             const computerChoice = getComputerChoice();
             playRound(humanChoice, computerChoice);
         });
