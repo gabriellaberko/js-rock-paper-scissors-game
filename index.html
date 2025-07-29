@@ -6,6 +6,7 @@
     <title>Document</title>
 </head>
 <body>
+    <button id="playButton">Play "rock, paper, scissors"!</button>
     <script>
         /* Create a function getComputerChoice that randomly return one of the following string values: “rock”, “paper” or “scissors”. 
          - Randomly return the value 1, 2 or 3
@@ -27,7 +28,29 @@
             }
             console.log(tool);
         }
+        
+        /* Create a function getHumanChoice that will return one of the valid choices depending on what the user inputs. 
+        - Ask the user for rock, paper or scissors with a prompt
+        - Get the users input and log it in console
+        */
+        function getHumanChoice() {
+
+            const signButton = document.querySelector("#playButton");
+
+            signButton.addEventListener("click", () => {
+            let sign = prompt("Rock, paper, or scissors?"); 
     
+            
+            if (sign.toLowerCase() === "rock") {
+                console.log(innerText = "You're playing rock!");
+            } if (sign.toLowerCase() === "paper") {
+                console.log(innerText = "You're playing paper!");
+            } if (sign.toLowerCase() === "scissors") {
+                console.log(innerText = "You're playing scissors!");
+            }
+            });
+        }
+        getHumanChoice();
     </script>
 </body>
 </html>
