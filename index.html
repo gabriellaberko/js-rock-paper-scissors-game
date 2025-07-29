@@ -12,22 +12,19 @@
          - Randomly return the value 1, 2 or 3
          - Associate each of the numbers with a value of either "Rock", "Paper" or "Scissors"
         */
-        
         function getComputerChoice() {
             let randomNumber = Math.floor(Math.random() * 3) + 1;
-            /*console.log(randomNumber);*/
-            let tool;
+            let choice;
             if (randomNumber === 1) {
-            tool = "rock";
+            choice = "rock";
             } 
             if (randomNumber === 2) {
-            tool = "paper";
+            choice = "paper";
             }
             if (randomNumber === 3) {
-            tool = "scissors";
+            choice = "scissors";
             }
-            /*console.log(tool);*/
-            return tool;
+            return choice;
         }
         
         /* Create a function getHumanChoice that will return one of the valid choices depending on what the user inputs. 
@@ -35,18 +32,12 @@
         - Get the users input and return it
         */
         function getHumanChoice() {
-
-            const playButton = document.querySelector("#playButton");
-
-                playButton.addEventListener("click", () => {
                 let choice = prompt("Rock, paper, or scissors?"); 
-        
                 choice = choice.toLowerCase();
                 if (choice === "rock" || choice === "paper" || choice === "scissors") {
                 console.log(`You're playing ${choice}!`);
                 return choice;
                 }
-            })
         }
 
         /* Keep track of player scores. Create a variable each for the human and the computer containing their score. Set initial value to 0.*/
@@ -58,7 +49,6 @@
             - Increment the round winner's scores
             - Log winner announcent
         */
-
         function playRound(humanChoice, computerChoice) {
             if (humanChoice === computerChoice) {
             console.log("Go again!");
@@ -77,10 +67,14 @@
         
         }
 
-        const humanChoice = getHumanChoice();
-        const computerChoice = getComputerChoice();
-
-        playRound(humanChoice, computerChoice);
+        /* Make everything run in the right order after user's input. */
+        const playButton = document.querySelector("#playButton");
+        
+        playButton.addEventListener("click", () => {
+            const humanChoice = getHumanChoice();
+            const computerChoice = getComputerChoice();
+            playRound(humanChoice, computerChoice);
+        });
 
     </script>
 </body>
