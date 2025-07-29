@@ -15,46 +15,73 @@
         
         function getComputerChoice() {
             let randomNumber = Math.floor(Math.random() * 3) + 1;
-            console.log(randomNumber);
+            /*console.log(randomNumber);*/
             let tool;
             if (randomNumber === 1) {
-            tool = "Rock";
+            tool = "rock";
             } 
             if (randomNumber === 2) {
-            tool = "Paper";
+            tool = "paper";
             }
             if (randomNumber === 3) {
-            tool = "Scissors";
+            tool = "scissors";
             }
-            console.log(tool);
+            /*console.log(tool);*/
+            return tool;
         }
         
         /* Create a function getHumanChoice that will return one of the valid choices depending on what the user inputs. 
         - Ask the user for rock, paper or scissors with a prompt
-        - Get the users input and log it in console
+        - Get the users input and return it
         */
         function getHumanChoice() {
 
-            const signButton = document.querySelector("#playButton");
+            const playButton = document.querySelector("#playButton");
 
-            signButton.addEventListener("click", () => {
-            let sign = prompt("Rock, paper, or scissors?"); 
-    
-            
-            if (sign.toLowerCase() === "rock") {
-                console.log(innerText = "You're playing rock!");
-            } if (sign.toLowerCase() === "paper") {
-                console.log(innerText = "You're playing paper!");
-            } if (sign.toLowerCase() === "scissors") {
-                console.log(innerText = "You're playing scissors!");
-            }
-            });
+                playButton.addEventListener("click", () => {
+                let choice = prompt("Rock, paper, or scissors?"); 
+        
+                choice = choice.toLowerCase();
+                if (choice === "rock" || choice === "paper" || choice === "scissors") {
+                console.log(`You're playing ${choice}!`);
+                return choice;
+                }
+            })
         }
-        getHumanChoice();
 
         /* Keep track of player scores. Create a variable each for the human and the computer containing their score. Set initial value to 0.*/
         let humanScore = 0
         let computerScore = 0
+
+        /* Create game rounds
+            - Use the players (human and computer) choices as arguments
+            - Increment the round winner's scores
+            - Log winner announcent
+        */
+
+        function playRound(humanChoice, computerChoice) {
+            if (humanChoice === computerChoice) {
+            console.log("Go again!");
+            } else if (
+                (humanChoice === "rock" && computerChoice === "scissors") ||
+                (humanChoice === "paper" && computerChoice === "rock") ||
+                (humanChoice === "scissors" && computerChoice === "paper")
+            ) {
+                console.log(`Congrats! ${humanChoice} beats ${computerChoice}`);
+                humanScore++;
+            } else {
+                console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+                computerScore++;
+            }
+            console.log(`Your score: ${humanScore} | Computer score: ${computerScore}`);
+        
+        }
+
+        const humanChoice = getHumanChoice();
+        const computerChoice = getComputerChoice();
+
+        playRound(humanChoice, computerChoice);
+
     </script>
 </body>
 </html>
