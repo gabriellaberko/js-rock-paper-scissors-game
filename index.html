@@ -39,7 +39,6 @@
             }
             choice = choice.toLowerCase();
             if (choice === "rock" || choice === "paper" || choice === "scissors") {
-                console.log(`You're playing ${choice}!`);
                 return choice; 
                 }
             else {
@@ -77,13 +76,30 @@
 
         /* Make everything run in the right order after user's input. */
         const playButton = document.querySelector("#playButton");
-
         playButton.addEventListener("click", () => {
-            const humanChoice = getHumanChoice();
-            if (humanChoice === null) return; //stop running if the user cancelled the prompt
-            const computerChoice = getComputerChoice();
-            playRound(humanChoice, computerChoice);
+            playGame();
         });
+        function playGame() {
+                for (let round = 1; round <= 5; round++) {
+                const humanChoice = getHumanChoice();
+                if (humanChoice === null) return; //stop running if the user cancelled the prompt
+                const computerChoice = getComputerChoice();
+                playRound(humanChoice, computerChoice);
+                };
+        //Announce winner of the rounds
+            if (humanScore > computerScore) {
+                alert(`Congrats, you won! Final score after 5 rounds:\nYou: ${humanScore}\nComputer: ${computerScore}`);
+                }
+            if (humanScore < computerScore) {
+                alert(`Sorry mate, you lost! Final score after 5 rounds:\nYou: ${humanScore}\nComputer: ${computerScore}`);
+                }
+            if (humanScore === computerScore) {
+                alert(`Fair game! Final score after 5 rounds:\nYou: ${humanScore}\nComputer: ${computerScore}`);
+                }
+        // Set the scores back to 0 after 5 rounds
+            humanScore = 0
+            computerScore = 0
+        };
     </script>
 </body>
 </html>
